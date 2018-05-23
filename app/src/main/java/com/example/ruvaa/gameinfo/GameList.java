@@ -5,5 +5,13 @@ package com.example.ruvaa.gameinfo;
  */
 
 public class GameList {
-
+//    private List<Games> list;
+//
+//    public List<Games> getList() {
+//        return list;
+//    }
+//
+//    public void setList(List<Games> list) {
+//        this.list = list;
+//    }
 }

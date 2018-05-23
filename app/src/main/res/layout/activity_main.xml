@@ -46,6 +46,7 @@
         android:background="@drawable/roundedbutton"
         android:text="My Games"
         android:textSize="18sp"
+        android:onClick="openMyGames"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
