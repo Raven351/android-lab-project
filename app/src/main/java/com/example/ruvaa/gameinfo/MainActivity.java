@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText gameTextBox = (EditText) findViewById(R.id.editTextGameTitle);
-        final Button searchButton = (Button) findViewById(R.id.buttonSearch);
+        EditText gameTextBox = findViewById(R.id.editTextGameTitle);
+        final Button searchButton = findViewById(R.id.buttonSearch);
 
         gameTextBox.addTextChangedListener(new TextWatcher() {
             @Override
@@ -43,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void openMyGames(View view) {
         Intent intent = new Intent(this, MyGames.class);
+        startActivity(intent);
+    }
+
+    public void openSearchGame(View view){
+        EditText gameTextBox = findViewById(R.id.editTextGameTitle);
+        Intent intent = new Intent(this, SearchGame.class);
+        String gameTitle = gameTextBox.getText().toString();
+        intent.putExtra("gameTitle", gameTitle);
         startActivity(intent);
     }
 

@@ -102,6 +102,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/roundedbutton"
+        android:onClick="openSearchGame"
         android:text="Search"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
