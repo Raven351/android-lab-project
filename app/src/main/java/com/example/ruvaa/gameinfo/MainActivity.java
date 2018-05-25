@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyGames.class);
         startActivity(intent);
     }
-
     public void openSearchGame(View view){
         EditText gameTextBox = findViewById(R.id.editTextGameTitle);
         Intent intent = new Intent(this, SearchGame.class);

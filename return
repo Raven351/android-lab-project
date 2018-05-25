@@ -1,0 +1,29 @@
+[33mcommit fd6922305ed84225a9bbe79f734a89da7f3f5cb2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Bartosz Baum <bart.baum1@gmail.com>
+Date:   Wed May 23 17:36:04 2018 +0200
+
+    added functionality - passing value to search activity
+
+[33mcommit 6d2024d9f075dadb8037319701418ac0075939bf[m
+Author: Bartosz Baum <bart.baum1@gmail.com>
+Date:   Wed May 23 17:07:33 2018 +0200
+
+    Improved searchbox and searchbutton
+
+[33mcommit 12ddce57753ce671c0c0b8b2d47c5bceea906ea8[m
+Author: Bartosz Baum <bart.baum1@gmail.com>
+Date:   Wed May 23 17:07:21 2018 +0200
+
+    Improved searchbox and searchbutton
+
+[33mcommit 5dec4c480b2e3a5ccb14a704a4aceeff3cee055e[m
+Author: Bartosz Baum <bart.baum1@gmail.com>
+Date:   Wed May 23 14:56:17 2018 +0200
+
+    Main activity layout completed, added igdp api wrapper to gradle and internet permission to manifest
+
+[33mcommit 1aa85e7c7182127a580e17600b3d51b81ae652dc[m
+Author: Bartosz Baum <bart.baum1@gmail.com>
+Date:   Wed May 23 13:40:28 2018 +0200
+
+    Initial commit
