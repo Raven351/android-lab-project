@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 /**
@@ -24,7 +26,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mGameCovers = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(ArrayList<String> mGameTitles, ArrayList<String> mGameCovers, Context mContext) { //constructor
+    public RecyclerViewAdapter(ArrayList<String> mGameTitles, ArrayList<String> mGameCovers, Context mContext) { //constructor - gets title of the game and url of it's cover and makes an recycle view item
+        //with them
         this.mGameTitles = mGameTitles;
         this.mGameCovers = mGameCovers;
         this.mContext = mContext;
@@ -40,13 +43,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     //todo dokonczyc
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {        //called every time a new item is added to recycle view
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {        //called every time a new item is added to recycle view
         Log.d(TAG, "onBindViewHolder: called");
+        Glide.with(mContext).asDrawable().load(mGameCovers.get(position)).into(holder.cover);
+        holder.title.setText(mGameTitles.get(position));
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: clicked on: " + mGameTitles.get(position));
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mGameTitles.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
