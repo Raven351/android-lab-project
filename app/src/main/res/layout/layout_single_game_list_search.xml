@@ -4,15 +4,19 @@
     android:id="@+id/gameItemLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_green_dark"
+    android:layout_marginBottom="2dp"
+    android:background="#BDBDBD"
     android:paddingTop="5dp">
+
 
     <ImageView
         android:id="@+id/gameCover"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginLeft="5dp"
+        android:background="#E6E6E6"
         app:srcCompat="@drawable/samplecover"
+        android:scaleType="matrix"
 
         />
 
@@ -22,21 +26,36 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/gameCover"
         android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@id/add"
         android:layout_toRightOf="@id/gameCover"
         android:text="Sample Title"
         android:textColor="#000"
-        android:textSize="23dp"
+        android:textSize="18dp"
 
 
         />
 
     <Button
         android:id="@+id/add"
-        android:layout_width="60dp"
-        android:layout_height="145dp"
+        android:layout_width="65dp"
+        android:layout_height="73dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
         android:background="@android:color/holo_green_light"
-        android:text="ADD"
+        android:text="My Games"
         android:textColor="@android:color/background_dark" />
+
+    <Button
+        android:id="@+id/addWishlist"
+        android:layout_width="65dp"
+        android:layout_height="73dp"
+        android:layout_alignEnd="@+id/add"
+        android:layout_below="@+id/add"
+        android:layout_marginTop="11dp"
+        android:background="@android:color/holo_blue_light"
+        android:layout_marginBottom="5dp"
+        android:text="Wishlist" />
+
+
 </RelativeLayout>

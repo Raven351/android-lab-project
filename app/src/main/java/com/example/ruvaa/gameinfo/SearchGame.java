@@ -23,6 +23,7 @@ public class SearchGame extends AppCompatActivity {
     private ArrayList<String> mGameTitles = new ArrayList<>();
     private ArrayList<String> mGameCovers = new ArrayList<>();
     private ArrayList<String> mGameIDs = new ArrayList<>();
+    private ArrayList<String> mGameURL = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +47,29 @@ public class SearchGame extends AppCompatActivity {
                 String gameTitle; //game title
                 String gameCoverURL; //game cover
                 String gameID;
+                String gameURL;
                 try {
                     int arraySize = jsonArray.length();
                     for (int i=0; i<arraySize; i++){
                         gameTitle = jsonArray.getJSONObject(i).getString("name");
 //                        urlJson = jsonArray.getJSONObject(i).getJSONObject("cover");
 //                        String url = urlJson.getString("url");
-                        gameCoverURL = jsonArray.getJSONObject(i).getJSONObject("cover").getString("url");
+                        try{
+                            gameCoverURL = jsonArray.getJSONObject(i).getJSONObject("cover").getString("url");
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                            gameCoverURL = "https://images.igdb.com/igdb/image/upload/t_cover_big/nocover_qhhlj6.jpg";
+                        }
+
                         gameID = jsonArray.getJSONObject(i).getString("id");
                         mGameTitles.add(gameTitle);
                         gameCoverURL = ("https:" + gameCoverURL);
                         mGameCovers.add(gameCoverURL);
                         mGameIDs.add(gameID);
+                        gameURL = jsonArray.getJSONObject(i).getString("url");
+                        mGameURL.add(gameURL);
+
                         Log.d("json length", "onSuccess: jsonsize: " +  jsonArray.length());
 
                     }
@@ -82,7 +94,7 @@ public class SearchGame extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.searchList);
-        RecyclerViewAdapterSearch adapter  = new RecyclerViewAdapterSearch(mGameTitles, mGameCovers, mGameIDs, this);
+        RecyclerViewAdapterSearch adapter  = new RecyclerViewAdapterSearch(mGameTitles, mGameCovers, mGameIDs, mGameURL ,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

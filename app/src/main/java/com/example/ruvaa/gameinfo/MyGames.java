@@ -30,6 +30,7 @@ public class MyGames extends AppCompatActivity {
     public static ArrayList<String> mOwnedGameIDs = new ArrayList<>();
     private ArrayList<String> mGameTitles = new ArrayList<>();
     private ArrayList<String> mGameCovers = new ArrayList<>();
+    private ArrayList<String> mGameURL = new ArrayList<>();
     private static String mOwnedIds;
 
     @Override
@@ -61,6 +62,7 @@ public class MyGames extends AppCompatActivity {
                 JSONObject urlJson;
                 String gameTitle; //game title
                 String gameCoverURL; //game cover
+                String gameURL;
                 try {
                     int arraySize = jsonArray.length();
                     for (int i=0; i<arraySize; i++){
@@ -71,6 +73,8 @@ public class MyGames extends AppCompatActivity {
                         mGameTitles.add(gameTitle);
                         gameCoverURL = ("https:" + gameCoverURL);
                         mGameCovers.add(gameCoverURL);
+                        gameURL = jsonArray.getJSONObject(i).getString("url");
+                        mGameURL.add(gameURL);
                     }
 //                    urlJson = jsonArray.getJSONObject(0).getJSONObject("cover");
 //                    String url = urlJson.getString("url");
@@ -93,7 +97,7 @@ public class MyGames extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.myGameList);
-        RecyclerViewAdapter adapter  = new RecyclerViewAdapter(mGameTitles, mGameCovers, this);
+        RecyclerViewAdapter adapter  = new RecyclerViewAdapter(mGameTitles, mGameCovers, mGameURL,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

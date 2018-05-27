@@ -25,7 +25,8 @@
 
         <activity android:name=".MyGames" />
         <activity android:name=".SearchGame" />
-        <activity android:name=".Wishlist"></activity>
+        <activity android:name=".Wishlist" />
+        <activity android:name=".GameDetails"></activity>
     </application>
 
 </manifest>
