@@ -23,27 +23,67 @@ import static android.content.ContentValues.TAG;
  */
 
 public class GameData {
-    String title;
-    String coverUrl;
-    JSONArray jsonArray;
+    private String title;
+    private String coverUrl;
 
-
-    public GameData(int id, Context context, String url) {
-        APIWrapper wrapper = new APIWrapper(context, "49147002af71997ed8b447357755a07b");
-        Parameters params = new Parameters().addFields("*").addIds(String.valueOf(id));
-        onSuccessCallback osc = new onSuccessCallback() {
-            @Override
-            public void onSuccess(JSONArray jsonArray) {
-                GameData.this.jsonArray = jsonArray;
-                Log.d(TAG, "onSuccess: " + jsonArray);
-            }
-
-            @Override
-            public void onError(VolleyError volleyError) {
-
-            }
-        };
-        wrapper.games(params, osc);
-        Log.d(TAG, "GameData: " + jsonArray);
+    public String getTitle() {
+        return title;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCoverUrl() {
+        return coverUrl;
+    }
+
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
+    }
+
+    public GameData(){
+
+    }
+
+
+//    public String getCoverUrl(int id, Context context){
+//        final String url;
+//        APIWrapper wrapper = new APIWrapper(context, "49147002af71997ed8b447357755a07b");
+//        Parameters params = new Parameters().addFields("*").addIds(String.valueOf(id));
+//        onSuccessCallback osc = new onSuccessCallback() {
+//            @Override
+//            public void onSuccess(JSONArray jsonArray) {
+//
+//            }
+//
+//            @Override
+//            public void onError(VolleyError volleyError) {
+//
+//            }
+//        };
+//
+//        wrapper.games(params, osc);
+//        return url;
+//    }
+
+
+//    public GameData(int id, Context context, String url) {
+//        APIWrapper wrapper = new APIWrapper(context, "49147002af71997ed8b447357755a07b");
+//        Parameters params = new Parameters().addFields("*").addIds(String.valueOf(id));
+//        onSuccessCallback osc = new onSuccessCallback() {
+//            @Override
+//            public void onSuccess(JSONArray jsonArray) {
+//                GameData.this.jsonArray = jsonArray;
+//                Log.d(TAG, "onSuccess: " + jsonArray);
+//            }
+//
+//            @Override
+//            public void onError(VolleyError volleyError) {
+//
+//            }
+//        };
+//        wrapper.games(params, osc);
+//        Log.d(TAG, "GameData: " + jsonArray);
+//    }
 }

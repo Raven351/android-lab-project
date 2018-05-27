@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         EditText gameTextBox = findViewById(R.id.editTextGameTitle);
         final Button searchButton = findViewById(R.id.buttonSearch);
 
+
         gameTextBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -45,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyGames.class);
         startActivity(intent);
     }
+
+    public void openWishlist(View view){
+        Intent intent = new Intent(this, Wishlist.class);
+        startActivity(intent);
+    }
+
     public void openSearchGame(View view){
         EditText gameTextBox = findViewById(R.id.editTextGameTitle);
         Intent intent = new Intent(this, SearchGame.class);

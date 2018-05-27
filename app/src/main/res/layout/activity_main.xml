@@ -60,10 +60,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/roundedbutton"
-        android:text="Upcoming Games"
+        android:text="Wishlist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMyGames" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMyGames"
+        android:onClick="openWishlist"
+        />
 
     <ImageView
         android:id="@+id/imageView2"

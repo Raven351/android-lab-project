@@ -50,7 +50,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on: " + mGameTitles.get(position));
+                Log.d(TAG, "onClick: clicked on: " + mGameTitles.get(position));    //TODO onClick -> new Activity do szczegolow gry
+
             }
         });
     }

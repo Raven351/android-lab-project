@@ -24,7 +24,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".MyGames" />
-        <activity android:name=".SearchGame"></activity>
+        <activity android:name=".SearchGame" />
+        <activity android:name=".Wishlist"></activity>
     </application>
 
 </manifest>

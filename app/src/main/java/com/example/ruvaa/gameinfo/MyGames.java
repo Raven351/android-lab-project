@@ -20,104 +20,75 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class MyGames extends AppCompatActivity {
 
-    static ArrayList<Integer> mOwnedGameIds = new ArrayList<>();
+    private static ArrayList<String> mOwnedGame = new ArrayList<>();
     private ArrayList<String> mGameTitles = new ArrayList<>();
     private ArrayList<String> mGameCovers = new ArrayList<>();
-    private String temp;
+    private static String mOwnedIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("created", "onCreate: CREATED");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_games);
 
+        //Recycle View Test
         mGameCovers.add("https://images.igdb.com/igdb/image/upload/t_cover_big/tri1c6vbydeosoqajwt1.jpg");
         mGameTitles.add("Witcher 3: Wild Hunt");
         mGameCovers.add("https://images.igdb.com/igdb/image/upload/t_cover_big/fen88hu0vhcf3k3owkxd.jpg");
         mGameTitles.add("Overwatch");
-
-        initRecyclerView();
-        //new things
-
+        mOwnedIds = "1234";
+        mOwnedIds += ",18472";
+        showGamesByIds(mOwnedIds);
+        //Log.d("owned games", "onCreate: owned game: " + gameData.getTitle());
+        //new things for API
 
     }
 
-
-
-    public void addGameById(int id) throws InterruptedException {
-            mGameCovers.add(apiGetCoverURL(id));
-//        APIWrapper wrapper = new APIWrapper(this, "49147002af71997ed8b447357755a07b");
-//        Parameters params = new Parameters().addFields("*").addIds(String.valueOf(id));
-//        wrapper.games(params, new onSuccessCallback() {
-//            @Override
-//            public void onSuccess(JSONArray jsonArray) {
-//                new JSONObject();
-//                JSONObject urlJson;
-//                try {
+    private void showGamesByIds(String IDs){
+        APIWrapper wrapper = new APIWrapper(this, "49147002af71997ed8b447357755a07b");
+        Parameters params = new Parameters().addFields("*").addIds(IDs);
+        wrapper.games(params, new onSuccessCallback() {
+            @Override
+            public void onSuccess(JSONArray jsonArray) {
+                new JSONObject();
+                JSONObject urlJson;
+                String gameTitle; //game title
+                String gameCoverURL; //game cover
+                try {
+                    int arraySize = jsonArray.length();
+                    for (int i=0; i<arraySize; i++){
+                        gameTitle = jsonArray.getJSONObject(i).getString("name");
+//                        urlJson = jsonArray.getJSONObject(i).getJSONObject("cover");
+//                        String url = urlJson.getString("url");
+                        gameCoverURL = jsonArray.getJSONObject(i).getJSONObject("cover").getString("url");
+                        mGameTitles.add(gameTitle);
+                        gameCoverURL = ("https:" + gameCoverURL);
+                        mGameCovers.add(gameCoverURL);
+                    }
 //                    urlJson = jsonArray.getJSONObject(0).getJSONObject("cover");
 //                    String url = urlJson.getString("url");
-//                    mGameCovers.add(url);
-//                    Log.d("url", "onSuccess: url = " + url);
-//                    Log.d("url added", "onCreate: " + mGameCovers.size());
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onError(VolleyError volleyError) {
-//
-//            }
-//        });
-//        Log.d("url", "addGameById: " + mGameCovers.size());
+                    Log.d("mGameCovers", "onSuccess: size = " + mGameCovers.size());
+                    Log.d("url", "onSuccess: " + mGameCovers.get(3));
+                    Log.d("url", "onSuccess: " + mGameCovers.get(1));
+                    initRecyclerView();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(VolleyError volleyError) {
+                Log.d("error", "onError: ");
+            }
+        });
     }
 
-
-    public String apiGetCoverURL(int id) {
-
-
-
-//        final String[] s = new String[1];
-//        final CountDownLatch lock = new CountDownLatch(1);
-//        APIWrapper wrapper = new APIWrapper(this, "49147002af71997ed8b447357755a07b");
-//        Parameters params = new Parameters().addFields("*").addIds(String.valueOf(id));
-//        wrapper.games(params, new onSuccessCallback() {
-//            @Override
-//            public void onSuccess(JSONArray jsonArray) {
-//                new JSONObject();
-//                JSONObject urlJson;
-//                try {
-//                    lock.countDown();
-//                    urlJson = jsonArray.getJSONObject(0).getJSONObject("cover");
-//                    String url = urlJson.getString("url");
-//                    mGameCovers.add(url);
-//                    Log.d("url", "onSuccess: url = " + url);
-//                    Log.d("url added", "onCreate: " + mGameCovers.size());
-//                    s[0] = url;
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onError(VolleyError volleyError) {
-//
-//            }
-//        });
-//        lock.await(70000, TimeUnit.MILLISECONDS);
-//        Log.d("url", "addGameById: " + mGameCovers.size());
-//        return s[0];
-//    }
-        return null;
-    }
-    //todo sprobowac jeszcze raz z klasa GameData
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.myGameList);
@@ -125,4 +96,38 @@ public class MyGames extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+
+
+    private void unusedGetURLBASIC(String IDs){
+        APIWrapper wrapper = new APIWrapper(this, "49147002af71997ed8b447357755a07b");
+        Parameters params = new Parameters().addFields("*").addIds(IDs);
+        wrapper.games(params, new onSuccessCallback() {
+            @Override
+            public void onSuccess(JSONArray jsonArray) {
+                new JSONObject();
+                JSONObject urlJson;
+                String titleJson;
+                try {
+                    titleJson = jsonArray.getJSONObject(1).getString("name");
+                    urlJson = jsonArray.getJSONObject(0).getJSONObject("cover");
+                    int arraysize = jsonArray.length();
+                    String url = urlJson.getString("url");
+                    mGameCovers.add(url);
+                    Log.d("url", "onSuccess: " + titleJson);
+                    Log.d("arraySize", "onSuccess: " + arraysize);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(VolleyError volleyError) {
+                Log.d("error", "onError: ");
+            }
+        });
+        Log.d("url", "addGameById: " + mGameCovers.size());
+    }
 }
+
+
