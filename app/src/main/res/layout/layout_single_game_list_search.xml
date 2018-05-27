@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gameItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/holo_green_dark"
+    android:paddingTop="5dp">
+
+    <ImageView
+        android:id="@+id/gameCover"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="5dp"
+        app:srcCompat="@drawable/samplecover"
+
+        />
+
+    <TextView
+        android:id="@+id/gameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/gameCover"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/gameCover"
+        android:text="Sample Title"
+        android:textColor="#000"
+        android:textSize="23dp"
+
+
+        />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="60dp"
+        android:layout_height="145dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/holo_green_light"
+        android:text="ADD"
+        android:textColor="@android:color/background_dark" />
+</RelativeLayout>

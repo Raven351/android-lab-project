@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         EditText gameTextBox = findViewById(R.id.editTextGameTitle);
         final Button searchButton = findViewById(R.id.buttonSearch);
-
+        MyGames.mOwnedGameIDs.add("1234");
+        MyGames.mOwnedGameIDs.add("18472");
 
         gameTextBox.addTextChangedListener(new TextWatcher() {
             @Override
